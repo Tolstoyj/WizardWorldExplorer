@@ -1,0 +1,362 @@
+{
+  "Version": 1,
+  "Hash": "aKL0OtuapHofNWbt17k5pV4JjrKTWADuLVXRUU4AWc8=",
+  "Source": "WebApplication3",
+  "BasePath": "_content/WebApplication3",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApplication3/wwwroot",
+      "Source": "WebApplication3",
+      "ContentRoot": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/",
+      "BasePath": "_content/WebApplication3",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/y1s7yu9eil-5h7zw7397y.gz",
+      "SourceId": "WebApplication3",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/WebApplication3",
+      "RelativePath": "css/site#[.{fingerprint=5h7zw7397y}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/css/site.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "0xsnmkfc4g",
+      "Integrity": "3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/css/site.css",
+      "SourceId": "WebApplication3",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/",
+      "BasePath": "_content/WebApplication3",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5h7zw7397y",
+      "Integrity": "Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/site.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/site.5h7zw7397y.css",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/y1s7yu9eil-5h7zw7397y.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000241312741"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4143"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5h7zw7397y"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.5h7zw7397y.css",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23033"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5h7zw7397y"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.5h7zw7397y.css.gz",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/y1s7yu9eil-5h7zw7397y.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5h7zw7397y"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/y1s7yu9eil-5h7zw7397y.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000241312741"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4143"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23033"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Z+OrHFQuR9K1HSRB5Ti6n6R3q5BqkylWxHqFi13XOYc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "/Users/tj/RiderProjects/WebApplication3/WebApplication3/obj/Debug/net9.0/compressed/y1s7yu9eil-5h7zw7397y.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 06:52:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3HflyHtbEMWomi1FeHkkhIecKchLJ2kErxYn294Hubg="
+        }
+      ]
+    }
+  ]
+}

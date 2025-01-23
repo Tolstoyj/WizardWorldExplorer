@@ -1,0 +1,267 @@
+@model List<WebApplication3.Models.House>
+@{
+    ViewData["Title"] = "Hogwarts Houses";
+}
+
+@section Styles {
+    <style>
+        /*<![CDATA[*/
+        .magical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(106, 27, 154, 0.05), rgba(156, 39, 176, 0.05));
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .houses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .house-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 8px 8px 16px rgba(94, 104, 121, 0.2),
+                       -8px -8px 16px rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .house-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .house-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            box-shadow: 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .house-name {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .house-animal {
+            color: var(--color-secondary);
+            font-style: italic;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .house-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: inset 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .house-details {
+            margin-top: 1.5rem;
+        }
+
+        .details-section {
+            margin-bottom: 1rem;
+        }
+
+        .details-title {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .details-content {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .traits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .trait-tag {
+            background: var(--bg-light);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            box-shadow: 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        @@media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .houses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .house-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        /*]]>*/
+    </style>
+}
+
+<div class="magical-bg"></div>
+<div class="container">
+    <div class="hero">
+        <h1>Hogwarts Houses</h1>
+        <p>Discover the noble houses of Hogwarts School of Witchcraft and Wizardry</p>
+    </div>
+
+    <div class="houses-grid">
+        @foreach (var house in Model)
+        {
+            <div class="house-card">
+                <div class="house-header">
+                    <div class="house-icon">
+                        @switch (house.Name.ToLower())
+                        {
+                            case "gryffindor":
+                                <i class="fas fa-shield-alt"></i>
+                                break;
+                            case "slytherin":
+                                <i class="fas fa-snake"></i>
+                                break;
+                            case "ravenclaw":
+                                <i class="fas fa-feather-alt"></i>
+                                break;
+                            case "hufflepuff":
+                                <i class="fas fa-seedling"></i>
+                                break;
+                            default:
+                                <i class="fas fa-hat-wizard"></i>
+                                break;
+                        }
+                    </div>
+                    <div>
+                        <h2 class="house-name">@house.Name</h2>
+                        <p class="house-animal">@house.Animal</p>
+                    </div>
+                </div>
+
+                <div class="house-info">
+                    <div class="info-item">
+                        <div class="info-label">Colors</div>
+                        <div class="info-value">@house.HouseColours</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Element</div>
+                        <div class="info-value">@house.Element</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Ghost</div>
+                        <div class="info-value">@house.Ghost</div>
+                    </div>
+                </div>
+
+                <div class="house-details">
+                    <div class="details-section">
+                        <h3 class="details-title">Founder</h3>
+                        <p class="details-content">@house.Founder</p>
+                    </div>
+
+                    <div class="details-section">
+                        <h3 class="details-title">Common Room</h3>
+                        <p class="details-content">@house.CommonRoom</p>
+                    </div>
+
+                    @if (house.Heads != null && house.Heads.Any())
+                    {
+                        <div class="details-section">
+                            <h3 class="details-title">House Heads</h3>
+                            <p class="details-content">
+                                @string.Join(", ", house.Heads.Select(h => $"{h.FirstName} {h.LastName}"))
+                            </p>
+                        </div>
+                    }
+
+                    @if (house.Traits != null && house.Traits.Any())
+                    {
+                        <div class="details-section">
+                            <h3 class="details-title">Notable Traits</h3>
+                            <div class="traits-list">
+                                @foreach (var trait in house.Traits)
+                                {
+                                    <span class="trait-tag">@trait.Name</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div> 

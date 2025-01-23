@@ -1,0 +1,392 @@
+@model List<WebApplication3.Models.Elixir>
+@{
+    ViewData["Title"] = "Magical Elixirs";
+}
+
+@section Styles {
+    <style>
+        /*<![CDATA[*/
+        .magical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(106, 27, 154, 0.05), rgba(156, 39, 176, 0.05));
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            color: var(--color-primary);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-controls {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 3rem 1.2rem 1.5rem;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 20px rgba(106, 27, 154, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #666;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3);
+        }
+
+        .elixirs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .elixir-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .elixir-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+        }
+
+        .elixir-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .elixir-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            box-shadow: 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .elixir-name {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .difficulty-badge {
+            background: var(--bg-light);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .elixir-section {
+            margin-top: 1.5rem;
+        }
+
+        .section-title {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .ingredient-tag {
+            background: var(--bg-light);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            box-shadow: 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .inventors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .inventor-tag {
+            background: var(--bg-light);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            box-shadow: 3px 3px 6px rgba(94, 104, 121, 0.2),
+                       -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        @@media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .elixirs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+        /*]]>*/
+    </style>
+}
+
+<div class="magical-bg"></div>
+<div class="container">
+    <div class="hero">
+        <h1>Magical Elixirs</h1>
+        <p>Discover the mystical potions and elixirs of the wizarding world</p>
+        
+        <div class="search-controls">
+            <div class="search-box">
+                <input type="text" id="elixirSearch" placeholder="Search elixirs..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-difficulty="all">All</button>
+                <button class="filter-btn" data-difficulty="Beginner">Beginner</button>
+                <button class="filter-btn" data-difficulty="Moderate">Moderate</button>
+                <button class="filter-btn" data-difficulty="Advanced">Advanced</button>
+                <button class="filter-btn" data-difficulty="Unknown">Unknown</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="elixirs-grid" id="elixirsContainer">
+        @foreach (var elixir in Model)
+        {
+            <div class="elixir-card" data-name="@elixir.Name.ToLower()" data-difficulty="@(elixir.Difficulty ?? "Unknown")">
+                <div class="elixir-header">
+                    <div class="elixir-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <h2 class="elixir-name">@elixir.Name</h2>
+                        <span class="difficulty-badge">@(elixir.Difficulty ?? "Unknown") Difficulty</span>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(elixir.Effect))
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Effect</h3>
+                        <p class="section-content">@elixir.Effect</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(elixir.SideEffects))
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Side Effects</h3>
+                        <p class="section-content">@elixir.SideEffects</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(elixir.Characteristics))
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Characteristics</h3>
+                        <p class="section-content">@elixir.Characteristics</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(elixir.Time))
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Brewing Time</h3>
+                        <p class="section-content">@elixir.Time</p>
+                    </div>
+                }
+
+                @if (elixir.Ingredients != null && elixir.Ingredients.Any())
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Ingredients</h3>
+                        <div class="ingredients-list">
+                            @foreach (var ingredient in elixir.Ingredients)
+                            {
+                                <span class="ingredient-tag">@ingredient.Name</span>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @if (elixir.Inventors != null && elixir.Inventors.Any())
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Inventors</h3>
+                        <div class="inventors-list">
+                            @foreach (var inventor in elixir.Inventors)
+                            {
+                                <span class="inventor-tag">@inventor.FirstName @inventor.LastName</span>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(elixir.Manufacturer))
+                {
+                    <div class="elixir-section">
+                        <h3 class="section-title">Manufacturer</h3>
+                        <p class="section-content">@elixir.Manufacturer</p>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const elixirSearch = document.getElementById('elixirSearch');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const elixirCards = document.querySelectorAll('.elixir-card');
+        
+        let currentFilter = 'all';
+
+        elixirSearch.addEventListener('input', filterElixirs);
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.difficulty;
+                filterElixirs();
+            });
+        });
+
+        function filterElixirs() {
+            const searchTerm = elixirSearch.value.toLowerCase();
+            
+            elixirCards.forEach(card => {
+                const name = card.dataset.name;
+                const difficulty = card.dataset.difficulty;
+                const matchesSearch = name.includes(searchTerm);
+                const matchesFilter = currentFilter === 'all' || difficulty === currentFilter;
+                
+                card.style.display = matchesSearch && matchesFilter ? 'block' : 'none';
+            });
+        }
+    </script>
+} 

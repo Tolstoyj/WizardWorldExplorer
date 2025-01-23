@@ -1,0 +1,521 @@
+@{
+    ViewData["Title"] = "Welcome to Wizard World";
+}
+
+@section Styles {
+    <style>
+        /* Thematic Fonts */
+        @@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a, #333333);
+            position: relative;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMu/b3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjIwLDIwIDIwLDIwIDIxLDIwIDIyLDIxIDIyLDIyIDIyLDIzIDIxLDIzIDIwLDIzIDE5LDIzIDE4LDIyIDE4LDIxIDE4LDIwIDE4LDE5IDE5LDE5IDIwLDE5IDIxLDE5IDIyLDE4IDIyLDE3IDIyLDE2IDIxLDE2IDIwLDE2IDE5LDE2IDE4LDE3IDE3LDIwIDE4LDIzIDIwLDIwIiBmaWxsPSIjZmZmZDAwIi8+Cjwvc3ZnPgo='), auto;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        /* Castle Silhouette */
+        .castle-silhouette {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDYwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTIwMCwxOTAgQzIwMCwxODAgMTkwLDE4MCAxODAsMTgwIEgxODAgMTgwIEExMDAuMCwxMDAuMCwwLDAsMCwxODAsMTgwIEEzMDAuMCwzMDAsMCwwLDAsMjAwLDE5MCBaIiBmaWxsPSIjNTU1NTU1Ii8+Cjwvc3ZnPg==') no-repeat center bottom;
+            background-size: cover;
+            pointer-events: none;
+        }
+
+        /* Magical Animations */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @@keyframes sparkle {
+            0% { opacity: 0; transform: scale(0) translateY(0); }
+            50% { opacity: 1; transform: scale(1.5) translateY(-20px); }
+            100% { opacity: 0; transform: scale(0) translateY(-40px); }
+        }
+
+        /* Animated Header */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #333333;
+            color: white;
+            text-align: center;
+        }
+
+        /* Candles */
+        .candles {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .candle {
+            width: 30px;
+            height: 60px;
+            position: relative;
+            animation: flicker 3s infinite;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 20px;
+            background: yellow;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 10px 2px yellow;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #ffffff33;
+            border-radius: 50%;
+        }
+
+        @@keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* House Crests */
+        .house-crest {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem auto;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2),
+                        -8px -8px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.2),
+                        -12px -12px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .feature-description {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #ffd700;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
+                        -3px -3px 6px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-link:hover {
+            background: #fffde7;
+            color: #1a1a1a;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+
+        .about-title {
+            font-size: 2rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2),
+                        -8px -8px 16px rgba(255, 255, 255, 0.1);
+        }
+
+        .about-card h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .about-card p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* Quote Carousel */
+        .quote-carousel {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            border-radius: 30px;
+            margin: 4rem 0;
+            box-shadow: inset 8px 8px 16px rgba(0, 0, 0, 0.2),
+                        inset -8px -8px 16px rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .quotes {
+            display: flex;
+            animation: slide 20s infinite;
+        }
+
+        .quote-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @@keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+
+        blockquote.quote {
+            font-size: 1.5rem;
+            color: #ffd700;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.5);
+            margin: 0;
+        }
+
+        .quote-author {
+            color: #fff;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* News & Events Section */
+        .news-section {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2),
+                        -8px -8px 16px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            color: #ddd;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Featured Wizards Section */
+        .featured-wizards-section {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+            color: #a8b2bd;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .candles {
+                display: none; /* Hide candles on smaller screens */
+            }
+
+            .quote-carousel .quotes {
+                flex-direction: column;
+                animation: none;
+            }
+
+            .quote-carousel .quote-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+}
+
+<!-- Background Overlay -->
+<div class="background-overlay"></div>
+
+<!-- Castle Silhouette -->
+<div class="castle-silhouette"></div>
+
+<!-- Magical Animations -->
+@for (int i = 0; i < 30; i++)
+{
+    <div class="sparkle" style="top:@($"{new Random().Next(10, 90)}%"); left:@($"{new Random().Next(0, 100)}%"); animation-delay:@($"{new Random().NextDouble()}s")"></div>
+}
+
+<div class="container">
+    <section class="hero-section">
+        <!-- Candles -->
+        <div class="candles">
+            @for (int i = 0; i < 3; i++)
+            {
+                <div class="candle"></div>
+            }
+        </div>
+        <h1 class="hero-title">Welcome to Wizard World</h1>
+        <p class="hero-subtitle">Embark on a magical journey through the enchanting universe of Harry Potter. Discover spells, explore houses, brew potions, and meet legendary wizards.</p>
+    </section>
+
+    <div class="features-grid">
+        <!-- Houses Feature Card -->
+        <div class="feature-card">
+            <!-- Gryffindor Crest SVG -->
+            <svg class="house-crest" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 2 L42 22 L62 22 L47 35 L52 58 L32 45 L12 58 L17 35 L2 22 L22 22 Z" fill="#ae0001"/>
+            </svg>
+            <h2 class="feature-title">Houses</h2>
+            <p class="feature-description">Discover the four houses of Hogwarts and their unique traits. Whether you're brave, cunning, wise, or loyal, find your true home.</p>
+            <a href="/Home/Houses" class="feature-link">Explore Houses</a>
+        </div>
+
+        <!-- Spells Feature Card -->
+        <div class="feature-card">
+            <!-- Slytherin Crest SVG -->
+            <svg class="house-crest" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 2 C42 2, 62 22, 62 32 C62 42, 42 62, 32 62 C22 62, 2 42, 2 32 C2 22, 22 2, 32 2 Z" fill="#1a472a"/>
+            </svg>
+            <h2 class="feature-title">Spells</h2>
+            <p class="feature-description">Learn about magical spells and their effects. From simple charms to powerful hexes, master the art of spellcasting.</p>
+            <a href="/Home/Spells" class="feature-link">View Spells</a>
+        </div>
+
+        <!-- Elixirs Feature Card -->
+        <div class="feature-card">
+            <!-- Ravenclaw Crest SVG -->
+            <svg class="house-crest" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30" fill="#0e1a40"/>
+            </svg>
+            <h2 class="feature-title">Elixirs</h2>
+            <p class="feature-description">Browse through magical potions and their properties. Discover ancient recipes and their magical effects.</p>
+            <a href="/Home/Elixirs" class="feature-link">Discover Elixirs</a>
+        </div>
+
+        <!-- Wizards Feature Card -->
+        <div class="feature-card">
+            <!-- Hufflepuff Crest SVG -->
+            <svg class="house-crest" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="32,2 50,22 50,42 32,62 14,42 14,22" fill="#ecb939"/>
+            </svg>
+            <h2 class="feature-title">Wizards</h2>
+            <p class="feature-description">Meet the famous wizards of the magical world. Learn about their achievements and contributions.</p>
+            <a href="/Home/Wizards" class="feature-link">Meet Wizards</a>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <h2 class="about-title">Why Wizard World?</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>For the Devoted Fan</h3>
+                <p>Created by fans, for fans, Wizard World is your ultimate companion in exploring the rich tapestry of the magical universe. Dive deep into the details that make the wizarding world so enchanting.</p>
+            </div>
+            <div class="about-card">
+                <h3>Comprehensive Knowledge</h3>
+                <p>From the sacred halls of Hogwarts to the intricate art of potion-making, access a vast repository of magical knowledge curated with the utmost attention to detail.</p>
+            </div>
+            <div class="about-card">
+                <h3>Interactive Experience</h3>
+                <p>Immerse yourself in an interactive journey through the magical realm. Search, explore, and discover new aspects of the wizarding world with our intuitive interface.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-carousel">
+        <div class="quotes">
+            <div class="quote-item">
+                <blockquote class="quote">
+                    "Happiness can be found even in the darkest of times if one only remembers to turn on the light."
+                </blockquote>
+                <p class="quote-author">- Albus Dumbledore</p>
+            </div>
+            <div class="quote-item">
+                <blockquote class="quote">
+                    "It does not do to dwell on dreams and forget to live."
+                </blockquote>
+                <p class="quote-author">- Albus Dumbledore</p>
+            </div>
+            <div class="quote-item">
+                <blockquote class="quote">
+                    "The ones that love us never really leave us."
+                </blockquote>
+                <p class="quote-author">- Sirius Black</p>
+            </div>
+            <div class="quote-item">
+                <blockquote class="quote">
+                    "After all this time? Always."
+                </blockquote>
+                <p class="quote-author">- Severus Snape</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="news-section">
+        <h2 class="about-title">Latest News</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <h3>New Spell Added</h3>
+                <p>Discover the newly added spell, Lumos Maxima, to brighten your darkest nights.</p>
+            </div>
+            <div class="news-card">
+                <h3>Hogwarts Expansion</h3>
+                <p>Exciting expansion news! Hogwarts is adding new classrooms and magical gardens.</p>
+            </div>
+            <div class="news-card">
+                <h3>Annual Wizarding Tournament</h3>
+                <p>Join us for the annual tournament celebrating the best wizards and witches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Wizards Section -->
+    <section class="featured-wizards-section">
+        <h2 class="about-title">Featured Wizards</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <h3>Gandalf the Grey</h3>
+                <p>A legendary wizard known for his wisdom and powerful magic.</p>
+            </div>
+            <div class="news-card">
+                <h3>Merlin</h3>
+                <p>Famed for his unparalleled magical prowess and guidance.</p>
+            </div>
+            <div class="news-card">
+                <h3>Harry Potter</h3>
+                <p>The Boy Who Lived, known for his courage and defeat of dark forces.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bottom">
+        &copy; 2023 Wizard World. All rights reserved.
+    </footer>
+</div>
+
+@section Scripts {
+    <script>
+        // Function to create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.animationDelay = `${Math.random()}s`;
+            sparkle.style.opacity = 1;
+            document.body.appendChild(sparkle);
+
+            // Remove sparkle after animation duration
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles at intervals
+        setInterval(createSparkle, 500);
+    </script>
+} 
